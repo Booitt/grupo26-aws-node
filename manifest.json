@@ -11,9 +11,6 @@
     "admin": "0.x",
     "messages": "1.x"
   },
-  "scripts": {
-    "prereleasy": "bash lint.sh"
-  },
   "credentialType": "absolute",
   "policies": [
     {
