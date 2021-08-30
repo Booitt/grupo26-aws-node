@@ -1,17 +1,17 @@
 import styled from  'styled-components'
 
 const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  
 
   div {
     display: flex;
   }
 
   .info {
+    display: flex;
+    align-items: center;
     gap: 1rem;
+
   }
 
   p.select {
