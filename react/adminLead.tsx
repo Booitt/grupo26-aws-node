@@ -33,6 +33,12 @@ const AdminLead: FC = () => {
     }
   }
 
+  const conversionRate = () => {
+    const clients = leads.filter(lead => lead.clientSince !== false).length
+    const prospects = leads.filter(lead => lead.clientSince === false).length
+    return ((clients/(clients + prospects)) * 100).toFixed(2)
+  }
+
   return (
     <Layout>
       <PageBlock
@@ -47,13 +53,15 @@ const AdminLead: FC = () => {
         <>
           <h1>Informações sobre os leads</h1>
           <Header>
+            <div className="info">
+              <p>Total: <strong>{leads.length}</strong></p>
+              <p>Prospectos: <strong>{leads.filter(lead => lead.clientSince === false).length}</strong></p>
+              <p>Clientes: <strong>{leads.filter(lead => lead.clientSince !== false).length}</strong></p>
+              <p>Taxa de conversão: <strong>{conversionRate()}%</strong></p>
+            </div>
             <div>
               <p onClick={handleToggleClient}  id="prospecto" className={ `select ${!clients ? 'active' : ''}`}>Prospectos</p>
               <p onClick={handleToggleClient} id="cliente" className={`select ${clients ? 'active' : ''}`}>Clientes</p>
-            </div>
-            <div className="info">
-              <p>Prospectos: {leads.filter(lead => lead.clientSince === false).length}</p>
-              <p>Clientes: {leads.filter(lead => lead.clientSince !== false).length}</p>
             </div>
           </Header>
           <List>
